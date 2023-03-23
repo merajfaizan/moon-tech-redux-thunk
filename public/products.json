@@ -1,6 +1,6 @@
 [
   {
-    "_id": 1,
+    "_id": "0f8b1100da2eb601a193d9c51ccb8c54",
     "model": "AMD Ryzen 5 5600X Gaming PC",
     "image": "https://live.staticflickr.com/65535/52522584794_4a9898a992_o.jpg",
     "status": true,
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "_id": 2,
+    "_id": "4a264ef763b696926c1175dbeda241fa",
     "model": "Intel 10th Gen Core i3-10100 Gaming PC",
     "image": "https://live.staticflickr.com/65535/52521844202_dd853335c9_o.jpg",
     "status": true,
@@ -79,7 +79,7 @@
     ]
   },
   {
-    "_id": 3,
+    "_id": "5d4d6325d3e4a4c15cb7005d09e9d151",
     "model": "AMD Ryzen 5 3600 Gaming PC",
     "image": "https://live.staticflickr.com/65535/52522855818_98bdd4c07a_o.jpg",
     "status": false,
@@ -117,7 +117,7 @@
     ]
   },
   {
-    "_id": 4,
+    "_id": "aeff708b32dd81382ceb25e657b423fc",
     "model": "Gaming PC 10th Gen Core i5-10400f",
     "image": "https://live.staticflickr.com/65535/52522584684_9fa14a3332_o.jpg",
     "status": false,
@@ -155,7 +155,7 @@
     ]
   },
   {
-    "_id": 5,
+    "_id": "62f415bb7318561a09f27bd47bef58d0",
     "model": "Intel 10th Gen Core i7-10700 Gaming PC",
     "image": "https://live.staticflickr.com/65535/52522308736_8453894269_o.jpg",
     "status": false,
@@ -193,7 +193,7 @@
     ]
   },
   {
-    "_id": 6,
+    "_id": "cf732693d1fe8516b7adcb6da9dc0b57",
     "model": "Intel Core i5-11400 11th Gen Gaming PC",
     "image": "https://live.staticflickr.com/65535/52522308721_4f2de69503_o.jpg",
     "status": true,
@@ -231,7 +231,7 @@
     ]
   },
   {
-    "_id": 7,
+    "_id": "e0ea3982b680ff90239cd500231091e9",
     "model": "Intel 11th Gen Core i5-11400f Gaming PC",
     "image": "https://live.staticflickr.com/65535/52522855818_98bdd4c07a_o.jpg",
     "status": true,
@@ -272,7 +272,7 @@
     ]
   },
   {
-    "_id": 8,
+    "_id": "19ab60ef7449b2c3469f677f5429fd1c",
     "model": "AMD Ryzen 7 5800X3D Gaming PC",
     "image": "https://live.staticflickr.com/65535/52521844332_5f738162d8_o.jpg",
     "status": true,
