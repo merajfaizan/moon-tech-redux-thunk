@@ -5,6 +5,7 @@ import {
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT,
+  SEARCH_PRODUCT,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -22,6 +23,11 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+      };
+    case SEARCH_PRODUCT:
+      const userInput = action.payload;
+      return {
+        ...state,
       };
     case ADD_PRODUCT:
       return {

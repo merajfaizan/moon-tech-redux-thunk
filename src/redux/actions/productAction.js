@@ -5,7 +5,15 @@ import {
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT,
+  SEARCH_PRODUCT,
 } from "../actionTypes/actionTypes";
+
+export const searchProduct = (str) => {
+  return {
+    type: SEARCH_PRODUCT,
+    payload: str,
+  };
+};
 
 export const loadProduct = (data) => {
   return {
