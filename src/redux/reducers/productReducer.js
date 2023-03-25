@@ -11,6 +11,7 @@ import {
 const initialState = {
   cart: [],
   products: [],
+  matchedItems: [],
 };
 
 const productReducer = (state = initialState, action) => {
@@ -25,9 +26,11 @@ const productReducer = (state = initialState, action) => {
         products: action.payload,
       };
     case SEARCH_PRODUCT:
-      const userInput = action.payload;
       return {
         ...state,
+        matchedItems: state.products.filter((product) =>
+          product.model.toLowerCase().includes(action.payload.toLowerCase())
+        ),
       };
     case ADD_PRODUCT:
       return {
@@ -37,7 +40,7 @@ const productReducer = (state = initialState, action) => {
     case REMOVE_PRODUCT:
       return {
         ...state,
-        products: state.products.filter(
+        products: state.products.map(
           (product) => product._id !== action.payload
         ),
       };

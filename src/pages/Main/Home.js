@@ -7,6 +7,7 @@ import loadProductData from "../../redux/thunk/products/fetchProducts";
 const Home = () => {
   const filters = useSelector((state) => state.filter.filters);
   const products = useSelector((state) => state.product.products);
+  const matchedItems = useSelector((state) => state.product.matchedItems);
   const { brands, stock } = filters;
 
   const dispatch = useDispatch();
@@ -18,6 +19,9 @@ const Home = () => {
   const activeClass = "text-white  bg-indigo-500 border-white";
 
   let content;
+  let searchItems;
+
+  // * show loaded products in ui and filter it by conditions
 
   if (products.length) {
     content = products.map((product) => (
@@ -27,6 +31,30 @@ const Home = () => {
 
   if (products.length && (stock || brands.length)) {
     content = products
+      .filter((product) => {
+        if (stock) {
+          return product.status === true;
+        }
+        return product;
+      })
+      .filter((product) => {
+        if (brands.length) {
+          return brands.includes(product.brand);
+        }
+        return product;
+      })
+      .map((product) => <ProductCard key={product.model} product={product} />);
+  }
+
+  // * searched items show in ui and filter conditions.
+  if (matchedItems.length) {
+    searchItems = matchedItems.map((product) => (
+      <ProductCard key={product.model} product={product} />
+    ));
+  }
+
+  if (matchedItems.length && (stock || brands.length)) {
+    searchItems = matchedItems
       .filter((product) => {
         if (stock) {
           return product.status === true;
@@ -71,7 +99,13 @@ const Home = () => {
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
-        {content}
+        {matchedItems.length ? (
+          searchItems
+        ) : products.length ? (
+          content
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </div>
   );
