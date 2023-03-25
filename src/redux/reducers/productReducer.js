@@ -11,7 +11,10 @@ import {
 const initialState = {
   cart: [],
   products: [],
-  matchedItems: [],
+  search: {
+    userInput: "",
+    matchedItems: [],
+  },
 };
 
 const productReducer = (state = initialState, action) => {
@@ -28,9 +31,13 @@ const productReducer = (state = initialState, action) => {
     case SEARCH_PRODUCT:
       return {
         ...state,
-        matchedItems: state.products.filter((product) =>
-          product.model.toLowerCase().includes(action.payload.toLowerCase())
-        ),
+        search: {
+          ...state.search,
+          userInput: action.payload,
+          matchedItems: state.products.filter((product) =>
+            product.model.toLowerCase().includes(action.payload.toLowerCase())
+          ),
+        },
       };
     case ADD_PRODUCT:
       return {

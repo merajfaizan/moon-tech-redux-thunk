@@ -7,7 +7,8 @@ import loadProductData from "../../redux/thunk/products/fetchProducts";
 const Home = () => {
   const filters = useSelector((state) => state.filter.filters);
   const products = useSelector((state) => state.product.products);
-  const matchedItems = useSelector((state) => state.product.matchedItems);
+  const searched = useSelector((state) => state.product.search);
+  const { userInput, matchedItems } = searched;
   const { brands, stock } = filters;
 
   const dispatch = useDispatch();
@@ -99,8 +100,15 @@ const Home = () => {
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
-        {matchedItems.length ? (
-          searchItems
+        {userInput.length ? (
+          matchedItems.length ? (
+            searchItems
+          ) : (
+            <p className="absolute top-1/3 font-semibold text-lg">
+              There is no product related to your search, try different search
+              keyword.
+            </p>
+          )
         ) : products.length ? (
           content
         ) : (
