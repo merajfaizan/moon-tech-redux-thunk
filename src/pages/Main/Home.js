@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
+import { MdOutlineFilterAltOff } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
-import { toggleBrand, toggleStock } from "../../redux/actions/filteractions";
+import {
+  clearFilters,
+  toggleBrand,
+  toggleStock,
+} from "../../redux/actions/filteractions";
 import loadProductData from "../../redux/thunk/products/fetchProducts";
 
 const Home = () => {
@@ -74,6 +79,14 @@ const Home = () => {
   return (
     <div className="max-w-7xl gap-14 mx-auto my-10">
       <div className="mb-10 flex justify-end gap-5">
+        {stock || brands.length ? (
+          <button
+            onClick={() => dispatch(clearFilters())}
+            className={`border flex justify-center items-center px-3 py-2 rounded-full font-semibold delay-10 focus:bg-red-500 focus:text-white`}
+          >
+            clear filters <MdOutlineFilterAltOff className="text-2xl" />
+          </button>
+        ) : null}
         <button
           onClick={() => dispatch(toggleStock())}
           className={`border px-3 py-2 rounded-full font-semibold ${
@@ -99,22 +112,24 @@ const Home = () => {
           Intel
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
-        {userInput.length ? (
-          matchedItems.length ? (
-            searchItems
-          ) : (
-            <p className="absolute top-1/3 font-semibold text-lg">
-              There is no product related to your search, try different search
-              keyword.
-            </p>
-          )
-        ) : products.length ? (
-          content
+      {userInput.length ? (
+        matchedItems.length ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
+            {searchItems}
+          </div>
         ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+          <p className="font-semibold text-lg">
+            There is <span className="text-red-500">no product</span> related to
+            your search, try different search keyword.
+          </p>
+        )
+      ) : products.length ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
+          {content}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };

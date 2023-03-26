@@ -22,7 +22,10 @@ const Navbar = () => {
             id="search"
             onInput={(e) => setSearchValue(e.target.value)}
           />
-          <button onClick={() => dispatch(searchProduct(searchValue))}>
+          <button
+            type="submit"
+            onClick={() => dispatch(searchProduct(searchValue))}
+          >
             <BiSearchAlt />
           </button>
         </li>
