@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import deleteProduct from "../../redux/thunk/products/deleteProduct";
 import loadProductData from "../../redux/thunk/products/fetchProducts";
 import { BiEdit } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const products = useSelector((state) => state.product.products);
@@ -69,7 +70,7 @@ const ProductList = () => {
                     </div>
                   </td>
                   <td className="p-2">
-                    <div className="flex justify-center">
+                    <div className="flex justify-center items-center">
                       <button
                         title="Delete"
                         onClick={() => dispatch(deleteProduct(_id))}
@@ -89,12 +90,15 @@ const ProductList = () => {
                           ></path>
                         </svg>
                       </button>
-                      <button>
+                      <Link
+                        className="inline-block"
+                        to={`/dashboard/edit-product/${_id}`}
+                      >
                         <BiEdit
                           title="Edit"
                           className="w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1"
                         />
-                      </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>
@@ -104,7 +108,6 @@ const ProductList = () => {
         </div>
       </div>
     </div>
-    // </section>
   );
 };
 

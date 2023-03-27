@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import Main from "../layout/Main/Main";
 import AddProduct from "../pages/Dashboard/AddProduct";
+import EditProduct from "../pages/Dashboard/EditProduct";
 import ProductList from "../pages/Dashboard/ProductList";
 import About from "../pages/Main/About";
 import Cart from "../pages/Main/Cart";
@@ -42,6 +43,12 @@ const routes = createBrowserRouter([
       {
         path: "add-product",
         element: <AddProduct />,
+      },
+      {
+        path: "edit-product/:_id",
+        element: <EditProduct />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params._id}`),
       },
     ],
   },
